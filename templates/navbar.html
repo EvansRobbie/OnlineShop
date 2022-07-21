@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NavBar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+<body>
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="../static/header-logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Products</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+</div>
+          <div class="responsive" style="top:105px;position: absolute;left:70%;">
+           {% if session.user %}
+                <!--Logout Modal-->
+                <a class="text-danger" href="/index" data-toggle="modal" data-target="#logoutModal"> Logout</a>
+                <a class="btn btn-sm btn-outline-primary m-2"  href="">{{session.user}}</a>
+                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                              <a class="btn btn-primary" href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                      </div>
+                         {% else %}
+                            <!--Login Modal-->
+                    <a class="text-light btn btn-sm btn-danger m-2" data-toggle="modal" data-target="#loginModal3" href="/index">Login</a>
+                        <div class="modal fade" id="loginModal3" tabindex="-1" role="dialog" aria-labelledby="loginModal3Label" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="loginModal3Label">Login</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                                <div class="modal-body">
+                                <form action="/action" method="post">
+                                    <input type="text" name="customer_surname" placeholder="Your Username" class="form-control" required>
+                                    <br>
+                                    <input type="password" name="password" placeholder="Your Password" class="form-control" required>
+                                    <br>
+                                    <br>
+                                    <a href="">Don't have an account? Create</a><br>
+                                    <a href="">Forgot Password?</a>
+                                    <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                 <input type="submit" value="login" class="btn btn-success">
+                              </div>
+                                  </form>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                    <!--Register Modal-->
+                 <a class="btn btn-sm btn-danger m-2" data-toggle="modal" data-target="#exampleModal3" href="/index">Register</a>
+                    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                             <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModal3Label">Register</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                  <div class="modal-body">
+                                       <form action="/action1" method="post">
+                                            <input type="text" name="customer_fname" placeholder="Your First Name" class="form-control" required>
+                                            <br>
+                                            <input type="text" name="customer_lname" placeholder="your last Name" class="form-control" required>
+                                            <br>
+                                            <input type="text" name="customer_surname" placeholder="Your Username" class="form-control" required>
+                                            <br>
+                                            <input type="tel" name="customer_phone" placeholder="Your Phone No." class="form-control" required>
+                                            <br>
+                                            <input type="email" name="customer_email" placeholder="Your Email" class="form-control" required>
+                                            <br>
+                                            <input type="password" name="customer_password" placeholder="Your Password" class="form-control" required>
+                                            <br>
+                                            <input type="password" name="customer_password2" placeholder="Confirm your Password" class="form-control" required>
+                                            <br>
+                                            <label for="">Gender</label><br>
+                                            <input type="radio" name="customer_gender" checked>Male
+                                            <input type="radio" name="customer_gender">Female
+                                            <br>
+                                            <label for="">Your Address</label><br>
+                                            <textarea name="customer_address" id="" cols="40" rows="2" required></textarea><br>
+                                            <br>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <input type="submit" value="Register" class="btn btn-success">
+                                              </div>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                         {% endif %}
+                        </div>
+                    </div>
+
+      </div>
+    </nav>
+
+
+</body>
+</html>

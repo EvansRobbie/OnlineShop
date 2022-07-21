@@ -1,0 +1,131 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>B2C online ecommerce site</title>
+
+    <!-- Bootstrap core CSS -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+
+    <!-- Additional CSS Files -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+
+  <body>
+
+    <!-- Pre Header -->
+  {% include 'preheader.html' %}
+
+  {% include 'navbar.html' %}
+  {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-dismissible " role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{message}}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner" style="background-image: url(static/banner-bg.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="caption">
+              <h2>B2C online shop</h2>
+              <div class="line-dec"></div>
+              <p>B2C online shop to be used for <strong>demo purposes</strong> I used  Bootstrap v4.1.3 layout for my design
+              <br><br>Mpesa check out will be included .</p>
+              <div class="main-button">
+                <a href="signUp.php">Sign In for news letter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Featured Starts Here -->
+    <div class="featured-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Featured Items</h1>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+               {% for row in rows %}
+              <a href="/product/{{row[0]}}">
+                <div class="featured-item">
+                  <img src="../static/{{row[1]}}" alt="Item 1">
+                  <h4>{{row[3]}}</h4>
+                  <h6>{{row[2]}}</h6>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Featred Ends Here -->
+
+   <!--div class="recentlyadded content-wrapper">
+    <h2>Recently Added Products</h2>
+    <div class="products">
+        <a href="index.php?page=product&id=<?=$product['id']?>" class="product">
+            <img src="images/<?=$product['img']?>" width="200" height="200" alt="<?=$product['name']?>">
+            <span class="name"><?=$product['name']?></span>
+            <span class="price">
+                &dollar;<?=$product['price']?>
+
+            </span>
+        </a>
+
+    </div>
+</--div-->
+
+
+
+{% include 'footer.html' %}
+
+    <!-- Bootstrap core JavaScript -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+
+    <!-- Additional Scripts -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+
+  </body>
+
+</html>
